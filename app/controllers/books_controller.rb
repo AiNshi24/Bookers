@@ -32,10 +32,11 @@ class BooksController < ApplicationController
   end
   
   def destroy
-    book = Book.find(params[:id])
-    book.destroy
-    redirect_to '/books'
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to '/books', notice: 'Book was successfully destroyed.'
   end
+  
   private
   
   def book_params
